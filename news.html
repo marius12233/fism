@@ -82,7 +82,7 @@
       </div>
     </div>
   </div>
-  <div ng-controller="NewsController">
+  <div ng-controller="newsController">
 
   <div ng-repeat="new in news" class="main main-raised pt-5 mt-5">
     <div class="container">
@@ -171,28 +171,18 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
   <script src="http://code.angularjs.org/1.2.1/angular-route.min.js"></script>
+  <script src="controllers/NewsController.js"></script>
+
 
   <script>
 
   var app = angular.module('appnews',[]);
 
-  app.controller('NewsController',function($scope,$http){
-
-    $scope.news = [];
-    //Appena viene iniettato il controller chiama il metodo get per prendere le news da visualizzare nel carousel
-    $http.get("http://localhost/backend/news")
-      .success(function(response){
-        console.log(response);
-        $scope.news = response;
-      })
-      .error(function(response){
-        console.log(response);
-      })
+  app.controller('NewsController',newsController);
 
     
 
 
-  });
 
   
 

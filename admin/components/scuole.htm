@@ -1,0 +1,306 @@
+<div class="section">
+  <div class="container">
+    <div class="row">
+        <div class="offset-md-11  col-md-1">
+          <div ng-if="!isAdding">
+            <span class="my-icon"  ng-click="toggleIsAdding()">
+                <i class="fa fa-2x fa-plus"></i>
+            </span>
+            </div>
+            <div ng-if="isAdding">
+                <span class="my-icon" style="background:red;" ng-click="toggleIsAdding()">
+                    <i class="fa fa-2x fa-times"></i>
+                </button>
+                </span>      
+        </div>                  
+      </div>
+  </div>
+</div>
+</div>
+
+
+<!--Form row-->
+<div class="row" ng-if="isAdding">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">Crea scuola</h4>
+          <p class="card-category">Crea una nuova scuola</p>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Name</label>
+                  <input type="text" class="form-control" ng-model="scuola.name">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Email </label>
+                  <input type="email" class="form-control" ng-model="scuola.email">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Password </label>
+                    <input type="password" class="form-control" ng-model="userSchool.password">
+                  </div>
+                </div>
+              </div>            
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Città</label>
+                  <input type="text" class="form-control" ng-model="scuola.city">
+                </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-md-6">
+                  <label class="bmd-label-floating">Provincia</label>
+                  <select type="text" class="form-control" ng-model="scuola.provincia">
+                      <option ng-repeat="provincia in province" value="{{provincia}}">{{provincia}}</option>
+                    </select>
+                </div>
+                </div>
+              </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Indirizzo</label>
+                    <input type="text" class="form-control" ng-model="scuola.address">
+                  </div>
+                </div>
+              </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Responsabile</label>
+                  <input type="text" class="form-control" ng-model="scuola.responsabile">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Coordinatore</label>
+                    <input type="text" class="form-control" ng-model="scuola.coordinatore">
+                  </div>
+                </div>
+              </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Num insegnanti</label>
+                  <input type="text" class="form-control" ng-model="scuola.num_insegnanti">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Num sezioni</label>
+                  <input type="text" class="form-control" ng-model="scuola.num_sezioni">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Num handicap</label>
+                  <input type="text" class="form-control" ng-model="scuola.num_handicap">
+                </div>
+              </div>
+              <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Paritaria</label>
+                    <input type="checkbox" class="form-control" ng-model="scuola.paritaria">
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Telefono</label>
+                    <input type="text" class="form-control" ng-model="scuola.telefono">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Cellulare</label>
+                    <input type="text" class="form-control" ng-model="scuola.cellulare">
+                  </div>
+                </div>
+              </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Altri Servizi</label>
+                  <div class="form-group">
+                    <label class="bmd-label-floating">
+                       Mensa, nido o altro...</label>
+                    <textarea class="form-control" rows="5" ng-model="scuola.servizi"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button ng-click="creaScuola()" class="btn btn-primary pull-right">Crea scuola</button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+
+        </div>
+      </div>
+    </div>
+<!--/Form-->
+<span id="scuola"></span>
+
+<!--View School-->
+
+<div  class="main main-raised pt-5 mt-5 card" ng-if="viewingSchool" >
+    <div class="container">
+      <div class="section text-center">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+                
+            <h1 class="title">{{selectedSchool.name}}</h2>
+            <h3 class="description">{{selectedSchool.type}}</h5>
+
+            
+          </div>
+          <div class="col-md-2">
+              <div class="icon icon-info" ng-click="closeView()">
+                  <i class="fa fa-2x fa-times"></i>
+              </div>
+          </div>
+        </div>
+        <div class="features">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="info">
+                  <div class="icon icon-info">
+                    <i class="fa fa-location-arrow"></i>
+                  </div>
+                  <h4 class="info-title">Indirizzo</h4>
+                  <p>{{selectedSchool.address}}</p>
+                  <h4 class="info-title">Città</h4>
+                  <p>{{selectedSchool.city}}</p>
+                  <h4 class="info-title">Provincia</h4>
+                  <p>{{selectedSchool.provincia}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="info">
+                  <div class="icon icon-success">
+                    <i class="material-icons">email</i>
+                  </div>
+                  <h4 class="info-title">email</h4>
+                  <p>{{selectedSchool.email}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="info">
+                  <div class="icon icon-danger">
+                    <i class="material-icons">group</i>
+                  </div>
+                  <h4 class="info-title">Responsabile</h4>
+                  <p>{{selectedSchool.responsabile}}</p>
+                  <h4 class="info-title">Coordinatore</h4>
+                  <p>{{selectedSchool.coordinatore}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                  <div class="info">
+                    <div class="icon icon-info">
+                      <i class="fa fa-institution" style="font-size: 20px;"></i>
+                    </div>
+                    <h4 class="info-title">Numero sezioni</h4>
+                    <p>{{selectedSchool.num_sezioni}}</p>
+                    <h4 class="info-title">Numero insegnanti</h4>
+                    <p>{{selectedSchool.num_insegnanti}}</p>
+                    <h4 class="info-title">Paritaria</h4>
+                    <p ng-if="selectedSchool.paritaria">Sì</p>
+                    <p ng-else>No</p>
+
+                    
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="info">
+                    <div class="icon icon-success">
+                      <i class="fa fa-wheelchair" style="font-size: 20px;"></i>
+                    </div>
+                    <h4 class="info-title">Numero bambini con handicap</h4>
+                    <p>{{selectedSchool.num_handicap}}</p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="info">
+                    <div class="icon icon-danger">
+                      <i class="material-icons">phone</i>
+                    </div>
+                    <h4 class="info-title">Telefono</h4>
+                    <p>{{selectedSchool.telefono}}</p>
+                    <h4 class="info-title">Cellulare</h4>
+                    <p>{{selectedSchool.cellulare}}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                 
+                  
+                  <div class="col-md-12">
+                    <div class="info">
+                      <div class="icon icon-danger">
+                        <i class="fa fa-sticky-note" style="font-size: 20px;"></i>
+                      </div>
+                      <h4 class="info-title">Servizi</h4>
+                      <p>{{selectedSchool.servizi}}</p>
+                      
+                    </div>
+                  </div>
+                </div>
+
+
+          </div>
+      </div>
+  </div>
+</div>
+<!--/ViewSchool-->
+
+<div class="row" >
+        <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="scuola in schools">
+            <div class="card card-stats my-info-card"  ng-click="setSelectedSchool(scuola);">
+                <div class="card-header card-header-success card-header-icon" >
+                  <div class="card-icon" >
+                    <i class="material-icons">store</i>
+                  </div>
+                  <p class="card-category">Scuola</p>
+                  <h3 class="card-title">{{scuola.name}}</h3>
+                </div>
+                <div class="card-body">
+                  
+                    <h6 class="card-category text-gray">email</h6>
+                    <h5 class="card-title">{{scuola.email}}</h5>
+                    <h6 class="card-category text-gray">Città</h6>
+                    <h5 class="card-title">{{scuola.city}}</h5>
+                 
+
+                </div>
+                    
+                  <div class="card-footer" >
+                  <div class="stats " style="cursor: pointer;" ng-click="deleteSchool(scuola.idscuola)">
+                      
+                    <i class="material-icons">close</i> Cancella
+                  </div>
+                </div>
+              </div>
+        </div>
+</div>

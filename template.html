@@ -171,12 +171,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa fa-newspaper-o"></i> NORMATIVA
+            <a href="normative.html" class="nav-link">
+              <i class="fa fa-newspaper-o"></i> NORMATIVE
             </a>
           </li>
           <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="news.html" class="nav-link">
             <i class="fa fa-file-text-o"></i> NEWS
           </a>
         </li>
@@ -186,7 +186,7 @@
             </a>
           </li>
           <li class="nav-item" >
-            <a href="login.html" class="nav-link">
+            <a href="admin/template.html" class="nav-link">
               <i class="fa fa-lock"></i> ARISERVATA
             </a>
           </li>
@@ -199,10 +199,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
-          <!--<div class="brand text-center">
-            <img src="assets/img/Fism.png" style="width:50%;height:auto;">
-            <h1 class="title text-center" style="color:black;margin-top:0">CAMPANIA</h1>
-          </div>-->
+          <div class="brand text-center">
+            <img src="assets/img/logofismwhite.png" style="width:50%;height:auto;">
+            <h1 class="title text-center" style="color:white;margin-top:0;font-size:400%;margin-left:5%;">CAMPANIA</h1>
+          </div>
         </div>
       </div>
     </div>
@@ -309,10 +309,10 @@
           <div class="carousel-item col-md-4 active">
             <div class="card info-card">
               <div class="card-body">
-                <a ng-href="{{news[0].path}}"><h4 class="card-title">{{news[0].name}}</h4></a>
-                <p class="card-text">{{news[0].type}}</p>
+                <a ng-href="{{news[0].path}}"><h4 class="card-title">{{news[0].name | uppercase}}</h4></a>
+                <p class="card-text">{{news[0].type }}</p>
                 <p class="card-text">
-                  <small class="text-muted">Last updated 3 mins ago</small>
+                  <small class="text-muted">{{news[0].date}}</small>
                 </p>
               </div>
             </div>
@@ -320,7 +320,7 @@
           <div ng-repeat="n in range(1,news.length-1)" class="carousel-item col-md-4">
             <div class="card info-card">
               <div class="card-body">
-                  <a ng-href="{{news[n].path}}"><h4 class="card-title">{{news[n].name}}</h4></a>
+                  <a ng-href="{{news[n].path}}"><h4 class="card-title">{{news[n].name | uppercase}}</h4></a>
                 <p class="card-text">{{news[n].type}}</p>
                 <p class="card-text">
                   <small class="text-muted">Caricata il {{news[n].date}}</small>
@@ -658,7 +658,7 @@
 
     $scope.news = [];
     //Appena viene iniettato il controller chiama il metodo get per prendere le news da visualizzare nel carousel
-    $http.get("http://localhost/backend/news")
+    $http.get("/backend/news")
       .success(function(response){
         console.log(response);
         $scope.news = response;
